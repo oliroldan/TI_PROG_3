@@ -10,7 +10,7 @@ function App() {
     <SearchFrom />
     <Switch>
       <Route path = "" component = {NotFound} />
-      <Route path = "/search" component = {SearchResults} />
+      <Route path = "/search" component = {SearchForm} />
     </Switch>
     <p>React</p>
     </>
