@@ -1,18 +1,21 @@
 import { Component } from "react";
-
+import { Link } from "react-router-dom"
 
 class Header extends Component{
     constructor(props){
         super(props)
     }
 
-
     render(){
-        const {name, image, species, status, origin} = this.props.character
         return(
             <article>
-			<h2> NOMBRE APP </h2> 
-			<img src={image} alt={name} />
+			<h2>ALL MOVIES</h2> 
+
+            <nav>
+            <ul>
+                <li><Link to= "/">Home</Link></li>
+            </ul>
+            </nav>
  
             
             </article>

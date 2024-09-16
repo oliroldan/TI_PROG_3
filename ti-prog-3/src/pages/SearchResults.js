@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 export class SearchResults extends Component {
-    constructor(props){
-        super(props)
-    }
+  constructor(props) {
+    super(props)
+  }
+  
   render() {
     return (
       <div>

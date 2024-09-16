@@ -1,33 +1,36 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
-export class SearchFrom extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            query: ""
-        }
+export class SearchForm extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      query: e.target.value
     }
+  }
 
-    componentDidMount
+  componentDidMount() {
+    // fetch
+  }
 
-    handleInputChange(e){
+  handleInputChange() {
 
-    }
+  }
 
-    handleInputSubmit(){
-
-    }
+  handleInputSubmit() {
+    this.props.history.push('/search', {query: this.query})
+  }
 
   render() {
     return (
-      <div>
-        <input onChange = {(e)=> this.state({
-            query: e.target.value
-        })} type = "text" name = "query" value={this.state.query} />
-        <button>Search Movie</button>
-      </div>
+      <>
+        <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
+
+        <button onClick={(this.handleInputSubmit)}>Search Movie</button>
+      </>
     )
   }
 }
 
-export default SearchFrom
+export default SearchForm
