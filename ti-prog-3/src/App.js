@@ -4,7 +4,6 @@ import NotFound from "./pages/NotFound";
 import SearchResults from "./pages/SearchResults";
 import Home from "./pages/Home";
 import Footer from "./components/Footer/Footer";
-// import Favoritos from "./components/Favoritos/favoritos";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
       <Route component = {NotFound} />
     </Switch>
     <Footer/>
-    <p>React</p>
     </>
   );
 }
