@@ -1,12 +1,13 @@
 const Home = () => {
+    /* const handleRedirect = () => {
+        // this.props.history.push('/search', {id: 10})
+    }; */
+
     return (
         <>
-        
-        handleRedirect(){
-            // this.props.history.push('/search', {id: 10})
-        }
+            
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

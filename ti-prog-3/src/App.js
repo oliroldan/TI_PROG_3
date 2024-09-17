@@ -13,7 +13,6 @@ function App() {
     <Switch>
       <Route path= "/" exact component= {Home}/>
       <Route path = "/search" component = {SearchResults}/>
-      <Route path = "/favoritos" component = {Favoritos}/>
       <Route component = {NotFound} />
     </Switch>
     <Footer/>
