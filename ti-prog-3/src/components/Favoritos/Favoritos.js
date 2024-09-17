@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
+
 
 class Favoritos extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Favoritos extends Component {
             isLoading: true
         })
 
-        const parsedArray = JSON.parse(storage)
+        const parsedArray = JSON.parse(Storage)
         Promise.all(
             parsedArray.map((id) => {
                 fetch('URL DE MOVIE!!!')
