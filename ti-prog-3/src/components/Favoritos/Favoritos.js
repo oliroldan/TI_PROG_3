@@ -1,11 +1,11 @@
-import react, { Component } from 'react'
+import { Component } from 'react'
 
 class Favoritos extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            movies: [], 
+            movies: [],
             isLoading: true
         }
     }
@@ -14,10 +14,11 @@ class Favoritos extends Component {
         this.setState({
             isLoading: true
         })
+
         const parsedArray = JSON.parse(storage)
         Promise.all(
             parsedArray.map((id) => {
-                fetch('URL de movie')
+                fetch('URL DE MOVIE!!!')
                     .then(response => response.json())
                     .then(movie =>
                         this.setState({

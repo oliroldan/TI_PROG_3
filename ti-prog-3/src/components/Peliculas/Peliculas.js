@@ -1,15 +1,12 @@
-import {Component} from 'react'
+import Pelicula from '../Pelicula/Pelicula'
 
-class Peliculas extends Component{
-    constructor(){
-        super()
-    }
-    
-    return (
-        <div>
-        
-        </div>
-    )
+const Peliculas = ({movies}) => {
+  return (
+    <div>
+      {movies.map(movie => <Pelicula movie= {movie}/>)}
+    </div>
+  )
 }
 
 export default Peliculas
+

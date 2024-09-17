@@ -10,16 +10,14 @@ export class SearchForm extends Component {
     }
   }
 
-  componentDidMount() {
-    // fetch
-  }
-
-  handleInputChange() {
-
+  handleInputChange(e) {
+    this.setState({
+      query: e.target.value
+    })
   }
 
   handleInputSubmit() {
-    this.props.history.push('/search', {query: this.query})
+    this.props.history.push('/search', {query: this.state.query})
   }
 
   render() {

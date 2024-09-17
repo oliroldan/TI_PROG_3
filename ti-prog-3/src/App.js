@@ -1,19 +1,22 @@
-import {Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound";
-import SearchForm from "./components/SearchForm/SearchFrom";
+import SearchResults from "./pages/SearchResults";
 import Home from "./pages/Home";
+import Footer from "./components/Footer/Footer";
+// import Favoritos from "./components/Favoritos/favoritos";
 
 function App() {
   return (
     <>
     <Header/>
-    <SearchForm />
     <Switch>
       <Route path= "/" exact component= {Home}/>
+      <Route path = "/search" component = {SearchResults}/>
+      <Route path = "/favoritos" component = {Favoritos}/>
       <Route component = {NotFound} />
-      <Route path = "/search" component = {SearchForm} />
     </Switch>
+    <Footer/>
     <p>React</p>
     </>
   );

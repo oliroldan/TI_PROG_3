@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 class Pelicula extends Component {
     constructor(props) {
@@ -56,6 +56,7 @@ class Pelicula extends Component {
                     <h4>{this.props.movie.title}</h4>
                     <p>Datos de la pelicula</p>
                 </div>
+                <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
                     {!this.state.esFavorito ? "Agregar a favoritos" : "Quitar de favoritos"}
                 </button>
