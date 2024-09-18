@@ -6,7 +6,7 @@ export class SearchForm extends Component {
     super(props)
 
     this.state = {
-      query: e.target.value
+      query: ''
     }
   }
 
