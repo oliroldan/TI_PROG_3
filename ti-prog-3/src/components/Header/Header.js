@@ -1,5 +1,7 @@
 import { Component } from "react";
-import { Link } from "react-router-dom"
+import Navbar from "../Navbar/Navbar";
+import SearchForm from "../SearchForm/SearchForm";
+import "./Header.css";
 
 class Header extends Component {
     /* constructor(props){
@@ -8,16 +10,10 @@ class Header extends Component {
 
     render() {
         return (
-            <article>
-                <h2>ALL MOVIES</h2>
-
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                    </ul>
-                </nav>
-            </article>
-
+            <header>
+                    <Navbar />
+                    <SearchForm />
+            </header>
         )
     }
 }
