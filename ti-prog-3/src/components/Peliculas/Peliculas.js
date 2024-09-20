@@ -4,7 +4,7 @@ import Pelicula from '../Pelicula/Pelicula';
 class Peliculas extends Component {
   constructor(props) {
     super(props);
-    this.state = { info: [] };
+    this.state = {info: []};
   }
 
   componentDidMount() {
@@ -17,12 +17,11 @@ class Peliculas extends Component {
   render() {
     return (
       <>
-        <article>
-          <h3>{this.props.titulo}</h3>
-          <div>
+        <section>
+          <>
             {this.state.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
-          </div>
-        </article>
+          </>
+        </section>
       </>
     )
   }

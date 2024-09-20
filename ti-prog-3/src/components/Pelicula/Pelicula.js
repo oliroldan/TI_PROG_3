@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 class Pelicula extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+
         this.state = { 
-            
+            showDesc: true
         };
     }
 
     handleShowDescr(){
         this.setState({
-            showDescr: !this.state.showDescr
+            showDescr: !this.state.showDescr // muestra lo contrario de lo que ya tenia
         })
     }
 
@@ -22,7 +23,7 @@ class Pelicula extends Component {
             <>
                 <div className="character-card">
                     <img src={`https://image.tmdb.org/t/p/w342/${img}`} alt={nombre} />
-                    <h3>{nombre}</h3>
+                    <Link to={`pelicula/id/${id}`}><h4>{nombre}</h4></Link>
 
                     <p className={this.state.showDescr ? "hide" : "show"} >{descr}</p>
                     <button onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descripcion" : "Ver descripcion"}</button>

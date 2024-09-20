@@ -1,21 +1,16 @@
-import { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
 
-class Header extends Component {
-    /* constructor(props){
-        super(props)
-    } */
-
-    render() {
-        return (
-            <header>
-                    <Navbar />
-                    <SearchForm />
-            </header>
-        )
-    }
+const Header = (props) => {
+  return (
+    <>
+        <header>
+            <Navbar />
+            <SearchForm history = {props.history}/>
+        </header>
+    </>
+  )
 }
 
 export default Header

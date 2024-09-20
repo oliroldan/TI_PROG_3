@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-const api_key = "&api_key=6d74e7317f9a497bee146a3eed86d6f7";
-
 class Detalle extends Component {
     constructor(props) {
         super(props)
