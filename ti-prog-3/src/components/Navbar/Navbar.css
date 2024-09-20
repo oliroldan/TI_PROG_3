@@ -1,22 +1,26 @@
 .navbar{
     display: flex;
-    justify-content: space-evenly;
-    align-items:center;
-    list-style: none;
     font-weight: bolder;
     background-color: rgb(196, 54, 201);
     height: fit-content;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .logo{
-    height: 50px;
-    width: 50px;
-    padding-right: 10px;
+    width: 80px;
+    max-height: 100%;
+    display: flex; 
+    border-radius: 70px;
 }
 
 ul{
-    color: black
+    color: black;
+    list-style: none;
+    display: flex;
+}
+
+li{
+    padding: 20px 20px;
 }
 
 .titulo{

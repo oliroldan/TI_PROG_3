@@ -1,23 +1,17 @@
 import React, { Component } from 'react'
 
-class PeliculaPopular extends Component {
+const api_key = "&api_key=6d74e7317f9a497bee146a3eed86d6f7";
+
+class Detalle extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            esFavorito: false,
-            movie: []
+            esFavorito: false
         }
     }
 
     componentDidMount() {
-        fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=6d74e7317f9a497bee146a3eed86d6f7")
-            .then(response => response.json())
-            .then(data => this.setState(
-                { movie: data.results }
-            ))
-            .catch(error => console.log(error));
-
         const storage = localStorage.getItem('favoritos')
         if (storage !== null) {
             const parsedArray = JSON.parse(storage)
@@ -58,13 +52,11 @@ class PeliculaPopular extends Component {
     }
 
     render() {
-        const {title, image} = this.props.movie
         return (
             <article className='data-detail'>
                 <div className='card-content'>
                     <h4>{this.props.movie.title}</h4>
-                    <p>Datos de la pelicula.</p>
-
+                    <p>Datos de la pelicula</p>
                 </div>
                 <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
@@ -76,4 +68,4 @@ class PeliculaPopular extends Component {
     }
 }
 
-export default PeliculaPopular
+export default Detalle

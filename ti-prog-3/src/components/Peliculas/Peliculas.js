@@ -1,29 +1,32 @@
-import {Component} from 'react'
+import { Component } from 'react'
+import Pelicula from '../Pelicula/Pelicula';
 
-class Peliculas extends Component{
-  constructor(props){
-    super(props)
+class Peliculas extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { info: [] };
   }
 
-  render(){
+  componentDidMount() {
+    fetch(this.props.url)
+      .then(response => response.json())
+      .then(data => this.setState({ info: data.results }))
+      .catch(error => console.error(error));
+  }
+
+  render() {
     return (
-      <div>Peliculas</div>
+      <>
+        <article>
+          <h3>{this.props.titulo}</h3>
+          <div>
+            {this.state.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
+          </div>
+        </article>
+      </>
     )
   }
-  
+
 }
 
 export default Peliculas
-/* import Pelicula from '../Pelicula/Pelicula'
-
-const Peliculas = ({movies}) => {
-  return (
-    <div>
-      {movies.map(movie => <Pelicula movie= {movie}/>)}
-    </div>
-  )
-}
-
-export default Peliculas
-
- */

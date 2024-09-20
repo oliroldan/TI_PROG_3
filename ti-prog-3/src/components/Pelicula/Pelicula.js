@@ -1,69 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class Pelicula extends Component {
     constructor(props) {
-        super(props)
-
-        this.state = {
-            esFavorito: false
-        }
+        super(props);
+        this.state = { 
+            
+        };
     }
 
-    componentDidMount() {
-        const storage = localStorage.getItem('favoritos')
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            const estaEnFavoritos = parsedArray.includes(this.props.movie.id)
-            this.setState({
-                esFavorito: estaEnFavoritos
-            })
-        }
-    }
-
-    agregarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            parsedArray.push(this.props.movie.id)
-            const stringArray = JSON.stringify(parsedArray)
-            localStorage.setItem('favoritos', stringArray)
-        } else {
-            const primerPelicula = [this.props.movie.id]
-            const stringArray = JSON.stringify(primerPelicula)
-            localStorage.setItem('favoritos', stringArray)
-        }
+    handleShowDescr(){
         this.setState({
-            esFavorito: true
+            showDescr: !this.state.showDescr
         })
-    }
-
-    sacarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-        const parsedArray = JSON.parse(storage)
-        const favoritosRestantes = parsedArray.filter(id => id !== this.props.movie.id)
-        const stringArray = JSON.stringify(favoritosRestantes)
-        localStorage.setItem('favoritos', stringArray)
-        this.setState({
-            esFavorito: false
-        })
-
     }
 
     render() {
-        return (
-            <article className='data-detail'>
-                <div className='card-content'>
-                    <h4>{this.props.movie.title}</h4>
-                    <p>Datos de la pelicula</p>
-                </div>
-                <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
-                <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
-                    {!this.state.esFavorito ? "Agregar a favoritos" : "Quitar de favoritos"}
-                </button>
+        const {id, nombre, descr, img} = this.props.pelicula;
 
-            </article>
-        )
+        return (
+            <>
+                <div className="character-card">
+                    <img src={`https://image.tmdb.org/t/p/w342/${img}`} alt={nombre} />
+                    <h3>{nombre}</h3>
+
+                    <p className={this.state.showDescr ? "hide" : "show"} >{descr}</p>
+                    <button onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descripcion" : "Ver descripcion"}</button>
+                    <p><Link to= {`/pelicula/id/${id}`}>Ver mas</Link></p>
+                </div>
+            </>
+        );
     }
 }
 
-export default Pelicula
+export default Pelicula;

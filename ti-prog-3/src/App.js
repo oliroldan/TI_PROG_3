@@ -4,7 +4,6 @@ import NotFound from "./pages/NotFound";
 import SearchResults from "./pages/SearchResults";
 import Home from "./pages/Home";
 import Footer from "./components/Footer/Footer";
-import PeliculasPopulares from "./components/PeliculasPopulares/PeliculasPopulares";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Route path= "/" exact component= {Home}/>
       <Route path = "/search" component = {SearchResults}/>
       <Route component = {NotFound} />
-      <Route path="populares" component={PeliculasPopulares}/>
     </Switch>
     <Footer/>
     </>
