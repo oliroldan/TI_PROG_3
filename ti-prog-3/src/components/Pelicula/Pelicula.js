@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Pelicula.css";
-//import { FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 class Pelicula extends Component {
     constructor(props) {
@@ -31,15 +31,14 @@ class Pelicula extends Component {
                         <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descr" : "Ver descr"}</button>
                     </article>
                     
-                    <p><Link to= {`/pelicula/id/${id}`}>Ir a detalle</Link></p>
+                    <p><Link to= {`/pelicula/id/${id}`}>Ir a detalle</Link></p>     
 
                     <div className="favoritos">
-                        <a href={`./detail-movie.html?movie_id=${id}`}>
-                            <h2 id={id} className="id">
-                            </h2>
+                        <a href="/favoritos">
+                            <h2 id={id}><FaHeart size={20} /></h2>
                         </a>
                     </div>
-                    
+
                 </section>
             </>
         );
