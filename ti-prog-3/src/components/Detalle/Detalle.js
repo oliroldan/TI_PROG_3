@@ -22,6 +22,7 @@ class Detalle extends Component {
 
     agregarFavorito() {
         const storage = localStorage.getItem('favoritos')
+
         if (storage !== null) {
             const parsedArray = JSON.parse(storage)
             parsedArray.push(this.props.movie.id)
@@ -55,6 +56,8 @@ class Detalle extends Component {
                 <div className='card-content'>
                     <h4>{this.props.movie.title}</h4>
                     <p>Datos de la pelicula</p>
+
+                    
                 </div>
                 <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>

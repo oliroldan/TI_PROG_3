@@ -1,7 +1,9 @@
-.container{
-    margin-top: 40px;
-    margin-left: 100px;
+.contenedor{
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -10,4 +12,5 @@
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+    justify-content: space-between;
 }

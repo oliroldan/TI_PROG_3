@@ -9,6 +9,8 @@ class Pelicula extends Component {
 
         this.state = { 
             showDescr: false,
+            esFavorito: false
+
         };
         this.handleShowDescr = this.handleShowDescr.bind(this);
     }
@@ -19,13 +21,45 @@ class Pelicula extends Component {
         })
     }
 
+    agregarFavorito() {
+        const storage = localStorage.getItem('favoritos')
+        
+        if (storage !== null) {
+            const parsedArray = JSON.parse(storage)
+            parsedArray.push(this.props.movie.id)
+            const stringArray = JSON.stringify(parsedArray)
+            localStorage.setItem('favoritos', stringArray)
+        } else {
+            const primerPelicula = [this.props.movie.id]
+            const stringArray = JSON.stringify(primerPelicula)
+            localStorage.setItem('favoritos', stringArray)
+        }
+        this.setState({
+            esFavorito: true
+        })
+    }
+
+    sacarFavorito() {
+        const storage = localStorage.getItem('favoritos')
+        const parsedArray = JSON.parse(storage)
+        const favoritosRestantes = parsedArray.filter(id => id !== this.props.movie.id)
+        const stringArray = JSON.stringify(favoritosRestantes)
+        localStorage.setItem('favoritos', stringArray)
+        this.setState({
+            esFavorito: false
+        })
+
+    }
+
     render() {
         const {id, title, overview, poster_path} = this.props.pelicula;
         return (
             <>
                 <section className='pelicula'>
                     <img src={`https://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
+                    
                     <Link to={`pelicula/id/${id}`}><h2>{title}</h2></Link>
+                    
                     <article className='extra'>
                         <p className={this.state.showDescr ? "show" : "hide"}>{overview}</p>
                         <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descr" : "Ver descr"}</button>
@@ -34,9 +68,12 @@ class Pelicula extends Component {
                     <p><Link to= {`/pelicula/id/${id}`}>Ir a detalle</Link></p>     
 
                     <div className="favoritos">
-                        <a href="/favoritos">
-                            <h2 id={id}><FaHeart size={20} /></h2>
-                        </a>
+
+                        <button>
+                            <a href="/favoritos">
+                                <h2 id={id}><FaHeart size={20} /></h2>
+                            </a>
+                        </button>
                     </div>
 
                 </section>

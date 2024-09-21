@@ -5,7 +5,7 @@ import "./Peliculas.css";
 class Peliculas extends Component {
   constructor(props) {
     super(props);
-    this.state = {info: []};
+    this.state = { info: [] };
   }
 
   componentDidMount() {
@@ -18,15 +18,16 @@ class Peliculas extends Component {
   render() {
     return (
       <>
-        <section className='container'>
+        <section className='contenedor'>
           <article>
+
             <h3>{this.props.titulo}</h3>
+
             <div className='peli'>
-              {this.state.info.slice(0,6).map((pelicula, index) => (
-                <Pelicula key={index} pelicula={pelicula} />
-                ))}
+              {this.state.info.slice(0, 6).map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
             </div>
-          </article>     
+
+          </article>
         </section>
       </>
     )

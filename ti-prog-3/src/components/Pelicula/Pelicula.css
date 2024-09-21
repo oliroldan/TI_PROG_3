@@ -21,6 +21,15 @@
     margin: 2px 0;
 }
 
+a{
+    text-decoration: none;
+    color: rgba(94, 11, 130, 0.68);
+}
+
+.more{
+    color:#777;
+}
+
 .hide{
     display: none;
 }
