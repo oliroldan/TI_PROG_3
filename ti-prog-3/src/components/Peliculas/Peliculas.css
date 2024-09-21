@@ -1,0 +1,13 @@
+.container{
+    margin-top: 40px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.peli{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}

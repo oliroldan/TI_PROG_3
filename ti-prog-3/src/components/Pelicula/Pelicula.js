@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link } from "react-router-dom";
+import "./Pelicula.css";
+//import { FaHeart } from "react-icons/fa";
 
 class Pelicula extends Component {
     constructor(props) {
         super(props)
 
         this.state = { 
-            showDesc: true
+            showDescr: false,
         };
+        this.handleShowDescr = this.handleShowDescr.bind(this);
     }
 
     handleShowDescr(){
@@ -17,18 +20,27 @@ class Pelicula extends Component {
     }
 
     render() {
-        const {id, nombre, descr, img} = this.props.pelicula;
-
+        const {id, title, overview, poster_path} = this.props.pelicula;
         return (
             <>
-                <div className="character-card">
-                    <img src={`https://image.tmdb.org/t/p/w342/${img}`} alt={nombre} />
-                    <Link to={`pelicula/id/${id}`}><h4>{nombre}</h4></Link>
+                <section className='pelicula'>
+                    <img src={`https://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
+                    <Link to={`pelicula/id/${id}`}><h2>{title}</h2></Link>
+                    <article className='extra'>
+                        <p className={this.state.showDescr ? "show" : "hide"}>{overview}</p>
+                        <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descr" : "Ver descr"}</button>
+                    </article>
+                    
+                    <p><Link to= {`/pelicula/id/${id}`}>Ir a detalle</Link></p>
 
-                    <p className={this.state.showDescr ? "hide" : "show"} >{descr}</p>
-                    <button onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descripcion" : "Ver descripcion"}</button>
-                    <p><Link to= {`/pelicula/id/${id}`}>Ver mas</Link></p>
-                </div>
+                    <div className="favoritos">
+                        <a href={`./detail-movie.html?movie_id=${id}`}>
+                            <h2 id={id} className="id">
+                            </h2>
+                        </a>
+                    </div>
+                    
+                </section>
             </>
         );
     }

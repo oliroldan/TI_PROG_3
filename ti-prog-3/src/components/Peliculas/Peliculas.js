@@ -1,5 +1,6 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Pelicula from '../Pelicula/Pelicula';
+import "./Peliculas.css";
 
 class Peliculas extends Component {
   constructor(props) {
@@ -17,10 +18,15 @@ class Peliculas extends Component {
   render() {
     return (
       <>
-        <section>
-          <>
-            {this.state.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
-          </>
+        <section className='container'>
+          <article>
+            <h3>{this.props.titulo}</h3>
+            <div className='peli'>
+              {this.state.info.slice(0,6).map((pelicula, index) => (
+                <Pelicula key={index} pelicula={pelicula} />
+                ))}
+            </div>
+          </article>     
         </section>
       </>
     )
