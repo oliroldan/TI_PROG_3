@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     font-weight: bolder;
-    background-color: rgb(196, 54, 201);
+    background-color: #ffd1dc;
     height: fit-content;
     flex-wrap: wrap;
 }
@@ -11,6 +11,7 @@
     max-height: 100%;
     display: flex; 
     border-radius: 70px;
+    align-self: center;
 }
 
 ul{
@@ -26,4 +27,5 @@ li{
 .titulo{
     color: black;
     font-family: 'Times New Roman', Times, serif;
+    align-self: center;
 }

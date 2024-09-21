@@ -23,9 +23,9 @@ export class SearchForm extends Component {
   render() {
     return (
       <>
-        <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
+        <input className="searchform" onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
 
-        <button onClick={(this.handleInputSubmit)}>Search Movie</button>
+        <button className="searchform" onClick={(this.handleInputSubmit)}>Search Movie</button>
       </>
     )
   }

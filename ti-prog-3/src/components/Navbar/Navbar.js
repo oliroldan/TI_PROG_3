@@ -6,7 +6,6 @@ const Navbar = () => {
   return (
         <nav className='navbar'>
             <article>
-                <h2 className="titulo">GOODMOVIES</h2>
                 <img className= "logo" src="./img/logo.png" alt=""/>
             </article>
             <ul>
