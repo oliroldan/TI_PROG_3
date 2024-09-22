@@ -2,7 +2,17 @@
     background-color: rgba(252, 182, 232, 0.7);
     border: 0;
     border-radius: 5px;
-    height: 15px;
-    width: 81px;
+    height:30px;
+    width: 90px;
 }
 
+input{
+    height: 20px;
+    width: 100px;
+}
+
+.search{
+    display: flex;
+    justify-content: space-evenly;
+    justify-self: center;
+}

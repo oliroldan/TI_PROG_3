@@ -36,9 +36,14 @@ class Peliculas extends Component {
               {this.state.info.slice(0, 6).map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
             </div>
             <div>
-              <h2>{this.state.verMas}</h2>
+              {/* <h2>{this.state.verMas}</h2> */}
               <Link to="/populares"><button>Ver todas</button></Link>
-              <Link to="/cartelera"><button>Ver todas</button></Link>
+              <Link to="/cartelera"><button>Ver todas</button></Link> 
+            </div>
+
+            <div className='masPelis'>
+              <p className={this.state.verMas ? "show" : "hide"}>{this.state.info.slice(6,10).map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}</p>
+              <button onClick={() => this.handleVerMas()}>{this.state.verMas ? "Cargar menos" : "Cargar mas"}</button>
             </div>
 
           </article>

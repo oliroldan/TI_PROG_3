@@ -14,3 +14,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
