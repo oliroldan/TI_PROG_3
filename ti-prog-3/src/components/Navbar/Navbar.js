@@ -11,7 +11,7 @@ const Navbar = () => {
             <ul>
                 <li><Link to="/" exact>Home</Link></li>
                 <li><Link to="/favoritos">Favoritos</Link></li>
-                <li><Link to="/populares">Peliculas mas populares</Link></li>
+                <li><Link to="/populares">Peliculas populares</Link></li>
                 <li><Link to="/cartelera">Peliculas en cartelera</Link></li>
             </ul>
         </nav>
