@@ -14,6 +14,7 @@ class Populares extends Component {
         <Link to="/populares">Peliculas populares </Link>
       </h2>
       <Peliculas url={popularesUrl}></Peliculas>
+      
       </>
     )
 }

@@ -12,6 +12,7 @@ class Cartelera extends Component {
       <>
         <h2><Link to="/cartelera">Peliculas en cartelera</Link></h2>
         <Peliculas url={cartelUrl} />
+        
       </>
     )
   }

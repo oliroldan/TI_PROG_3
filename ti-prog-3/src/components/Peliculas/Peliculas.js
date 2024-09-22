@@ -37,8 +37,8 @@ class Peliculas extends Component {
             </div>
             <div>
               {/* <h2>{this.state.verMas}</h2> */}
-              <Link to="/populares"><button>Ver todas</button></Link>
-              <Link to="/cartelera"><button>Ver todas</button></Link> 
+              {/* <Link to="/populares"><button>Ver todas</button></Link> */}
+              {/* <Link to="/cartelera"><button>Ver todas</button></Link>  */}
             </div>
 
             <div className='masPelis'>
