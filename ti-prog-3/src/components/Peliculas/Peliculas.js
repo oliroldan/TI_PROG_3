@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Pelicula from '../Pelicula/Pelicula';
 import "./Peliculas.css";
+import { Link } from "react-router-dom";
 
 class Peliculas extends Component {
   constructor(props) {
@@ -36,7 +37,8 @@ class Peliculas extends Component {
             </div>
             <div>
               <h2>{this.state.verMas}</h2>
-              <button>Ver más</button>
+              <Link to="/populares"><button>Ver todas</button></Link>
+              <Link to="/cartelera"><button>Ver todas</button></Link>
             </div>
 
           </article>
