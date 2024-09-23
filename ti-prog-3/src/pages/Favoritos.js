@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import "./Favoritos.css"
 
 class Favoritos extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            movies: [],
+            pelicula: [],
             isLoading: true
         }
     }

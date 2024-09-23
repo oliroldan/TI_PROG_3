@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const cartelUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=6d74e7317f9a497bee146a3eed86d6f7`;
 
 class Cartelera extends Component {
-  constructor() {
+  /* constructor() {
     super()
-  }
+  } */
   render() {
     return (
       <>

@@ -17,6 +17,10 @@ export class SearchForm extends Component {
     })
   }
 
+  handleCancelSubmit(e){
+    e.preventDefault()
+  }
+
   handleInputSubmit() {
     this.props.history.push('/search', {query: this.state.query})
   }

@@ -1,72 +1,71 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import "./Detalle.css"
 
 class Detalle extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            esFavorito: false
-        }
+            pelicula: {},
+            showDescr: false,
+            esFavorito: false,
+            isLoading: true
+        };
+
+        this.handleShowDescr = this.handleShowDescr.bind(this);
     }
 
     componentDidMount() {
-        const storage = localStorage.getItem('favoritos')
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            const estaEnFavoritos = parsedArray.includes(this.props.movie.id)
+        console.log('ID', this.props.id)
             this.setState({
-                esFavorito: estaEnFavoritos
+                isLoading: true
             })
-        }
+            fetch(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=6d74e7317f9a497bee146a3eed86d6f7`)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ pelicula: data, isLoading: false })
+                    console.log(data)
+                })
+                .catch(err => console.log(err))
+       
     }
 
-    agregarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            parsedArray.push(this.props.movie.id)
-            const stringArray = JSON.stringify(parsedArray)
-            localStorage.setItem('favoritos', stringArray)
-        } else {
-            const primerPelicula = [this.props.movie.id]
-            const stringArray = JSON.stringify(primerPelicula)
-            localStorage.setItem('favoritos', stringArray)
-        }
+    handleShowDescr() {
         this.setState({
-            esFavorito: true
+            showDescr: !this.state.showDescr // muestra lo contrario de lo que ya tenia
         })
-    }
-
-    sacarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-        const parsedArray = JSON.parse(storage)
-        const favoritosRestantes = parsedArray.filter(id => id !== this.props.movie.id)
-        const stringArray = JSON.stringify(favoritosRestantes)
-        localStorage.setItem('favoritos', stringArray)
-        this.setState({
-            esFavorito: false
-        })
-
     }
 
     render() {
+        
         return (
-            <article className='data-detail'>
-                <div className='card-content'>
-                    <h4>{this.props.movie.title}</h4>
-                    <p>Datos de la pelicula</p>
+            <>
+            {this.state.isLoading ? <p>LOADING...</p> : <section className='pelicula'>
+                    <img src={`https://image.tmdb.org/t/p/w342/${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title} />
 
-                    
-                </div>
-                <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
-                <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
-                    {!this.state.esFavorito ? "Agregar a favoritos" : "Quitar de favoritos"}
-                </button>
+                    <h2>{this.state.pelicula.title}</h2>
 
-            </article>
-        )
+                    <p>Duracion: {this.state.pelicula.runtime}</p>
+                    <p>Estreno: {this.state.pelicula.release_date}</p>
+                    {/* <p>Genero: {genres}</p> */}
+
+                    <p>{this.state.pelicula.overview}</p>
+
+                    <div className="favoritos">
+                        <button>
+                            <a href="/favoritos">
+                                <h2><FaHeart size={20} /></h2>
+                            </a>
+                        </button>
+                    </div>
+
+                </section>}
+                
+            </>
+        );
     }
 }
 
-export default Detalle
+export default Detalle;

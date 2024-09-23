@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Pelicula from '../Pelicula/Pelicula';
-import { Link } from "react-router-dom";
 
 class HomeMovies extends Component {
   constructor(props) {
