@@ -7,23 +7,32 @@ class Populares extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: [],
-      peliculasFiltrado: [], 
-      filterValue: '' //Aca no se sies un array al quele voy agregando pocisiones o como hacer!
+      info: [], // el le puso movie
+      peliculasFiltrado: [],
+      filterValue: '' 
     }
   }
   componentDidMount() {
     fetch(popularesUrl)
       .then(response => response.json())
-      .then(data => this.setState(
-        { info: data.results }
-      ))
+      .then((data)   => {
+        console.log(data.results, 'pelis aca')
+        this.setState(
+          {
+            info: data.results,
+            peliculasFiltrado: data.results
+          }
+        )
+      } )
       .catch(error => console.error(error));
   }
 
-  handleFilterChange() {
+  handleFilterChange(e) {
+    const userValue = e.target.value
+
     this.setState({
-      peliculasFiltrado: this.state.info.filter(movie => movie.title.includes(this.state.filterValue))
+      filterValue: userValue, 
+      peliculasFiltrado: this.state.info.filter(info => info.title.toLowerCase().includes(userValue.toLowerCase()))
     })
   }
   render() {
@@ -32,8 +41,11 @@ class Populares extends Component {
         <h2 className="peliculasPopulares">
           <Link to="/populares">Peliculas populares </Link>
         </h2>
-        <input type="text" onChange={this.handleFilterChange} placeholder="Filtrar peliculas" value={this.state.filterValue}/>
-        <Peliculas url={popularesUrl}></Peliculas>
+        <Peliculas pelicula={this.state.info} />
+        <input type="text" onChange={(e) => this.handleFilterChange(e)}
+          placeholder="Filtrar peliculas" value={this.state.filterValue} />
+{/*         <Peliculas url={popularesUrl}></Peliculas>
+ */}        <Peliculas info={this.state.peliculasFiltrado}/>
 
 
       </>

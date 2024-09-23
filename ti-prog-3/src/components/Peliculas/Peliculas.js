@@ -5,19 +5,21 @@ import "./Peliculas.css";
 class Peliculas extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       info: [],
-      verMas: false, 
-     };
+      verMas: false
+    };
   }
 
-  componentDidMount() {
+  /* componentDidMount() {
     fetch(this.props.url)
       .then(response => response.json())
-      .then(data => this.setState({ info: data.results }))
+      .then(data => this.setState({
+        info: data.results
+      }))
       .catch(error => console.error(error));
-  }
-  handleVerMas(){
+  } */
+  handleVerMas() {
     this.setState({
       verMas: !this.state.verMas // muestra lo contrario de lo que ya tenia
     })
@@ -32,7 +34,7 @@ class Peliculas extends Component {
             <h3>{this.props.titulo}</h3>
 
             <div className='peli'>
-              {this.state.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
+              {this.props.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
             </div>
 
             <div className='masPelis'>
