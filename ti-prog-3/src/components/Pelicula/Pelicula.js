@@ -80,10 +80,10 @@ class Pelicula extends Component {
         return (
             <>
 
-                <article className='data-detail'>
-                    <div className='card-content'>
+                <section className='pelicula'>
+                    <div>
 
-                        <section className='pelicula'>
+                        <article>
                             <img src={`https://image.tmdb.org/t/p/w342/${poster_path}`} alt={title} />
 
                             <Link to={`pelicula/id/${id}`}><h2>{title}</h2></Link>
@@ -102,11 +102,11 @@ class Pelicula extends Component {
                                 </button>
                             </div>
 
-                        </section>
+                        </article>
 
                     </div>
 
-                </article>
+                </section>
             </>
         )
     }
