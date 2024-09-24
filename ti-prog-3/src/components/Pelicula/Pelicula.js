@@ -3,6 +3,7 @@ import "./Pelicula.css"
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
+import Favoritas from '../Favoritas/Favoritas';
 
 class Pelicula extends Component {
     constructor(props) {
@@ -44,36 +45,6 @@ class Pelicula extends Component {
         })
     }
 
-    agregarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            parsedArray.push(this.props.pelicula.id)
-            const stringArray = JSON.stringify(parsedArray)
-            localStorage.setItem('favoritos', stringArray)
-        } else {
-            const primerPelicula = [this.props.pelicula.id]
-            const stringArray = JSON.stringify(primerPelicula)
-            localStorage.setItem('favoritos', stringArray)
-        }
-        this.setState({
-            esFavorito: true
-        })
-    }
-
-    sacarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-        const parsedArray = JSON.parse(storage)
-        const favoritosRestantes = parsedArray.filter(id => id !== this.props.pelicula.id)
-        const stringArray = JSON.stringify(favoritosRestantes)
-        localStorage.setItem('favoritos', stringArray)
-        this.setState({
-            esFavorito: false
-        })
-
-    }
-
     render() {
         const { id, title, overview, poster_path } = this.props.pelicula;
 
@@ -98,18 +69,18 @@ class Pelicula extends Component {
                             <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
                             <div className="favoritos">
                                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
-                                    <a href="/favoritos">{!this.state.esFavorito ? <FaRegHeart size={20} /> : <FaHeart size={20} />}</a>
+                                    <p>{!this.state.esFavorito ? <FaRegHeart size={20} /> : <FaHeart size={20} />}</p>
                                 </button>
                             </div>
 
-                        </article>
+                        </article> 
 
                     </div>
 
                 </section>
             </>
         )
-    }
+    } // despues reemplazariamos el article por <Favoritas/> que tendria todos estos datos
 }
 
 export default Pelicula

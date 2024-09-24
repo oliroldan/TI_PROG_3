@@ -37,3 +37,7 @@ a{
 .show{
     display: block;
 }
+
+.rating{
+    text-decoration: underline;
+}

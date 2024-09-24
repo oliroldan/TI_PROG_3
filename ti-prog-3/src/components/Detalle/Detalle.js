@@ -42,24 +42,19 @@ class Detalle extends Component {
         
         return (
             <>
-            {this.state.isLoading ? <p>LOADING...</p> : <section className='pelicula'>
+            {this.state.isLoading ? <p>Cargando...</p> : <section className='pelicula'>
                     <img src={`https://image.tmdb.org/t/p/w342/${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title} />
 
                     <h2>{this.state.pelicula.title}</h2>
 
-                    <p>Duracion: {this.state.pelicula.runtime}</p>
+                    <p>Duracion: {this.state.pelicula.runtime} minutos</p>
                     <p>Estreno: {this.state.pelicula.release_date}</p>
-                    {/* <p>Genero: {genres}</p> */}
+                    <p>Generos: {this.state.pelicula.genres.map(genre => genre.name).join(', ')}</p>
+                    <p>Rating: <a className= "rating" href={`https://www.imdb.com/title/${this.state.pelicula.imdb_id}/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_${this.state.pelicula.imdb_id}`}>IMDB</a></p>
 
                     <p>{this.state.pelicula.overview}</p>
 
-                    <div className="favoritos">
-                        <button>
-                            <a href="/favoritos">
-                                <h2><FaHeart size={20} /></h2>
-                            </a>
-                        </button>
-                    </div>
+                    
 
                 </section>}
                 
