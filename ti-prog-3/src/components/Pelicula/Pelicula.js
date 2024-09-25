@@ -3,7 +3,6 @@ import "./Pelicula.css"
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-//import Favoritas from '../Favoritas/Favoritas';
 
 class Pelicula extends Component {
     constructor(props) {
@@ -80,7 +79,6 @@ class Pelicula extends Component {
 
         return (
             <>
-
                 <section className='pelicula'>
                     <div>
 
@@ -101,16 +99,15 @@ class Pelicula extends Component {
                                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
                                     <p>{!this.state.esFavorito ? <FaRegHeart size={20} /> : <FaHeart size={20} />}</p>
                                 </button>
-                            </div> 
+                            </div>
 
-                        </article> 
+                        </article>
 
                     </div>
-
                 </section>
             </>
         )
-    } // despues reemplazariamos el article por <Favoritas/> que tendria todos estos datos
+    }
 }
 
 export default Pelicula

@@ -2,12 +2,12 @@
     display: flex;
     font-weight: bolder;
     background-color: #eec2ee;
-    height: fit-content;
+    height: 90px;
     flex-wrap: wrap;
 }
 
 .logo{
-    width: 80px;
+    width: 110px;
     max-height: 100%;
     display: flex; 
     border-radius: 70px;
@@ -29,6 +29,7 @@ li{
     font-family: 'Times New Roman', Times, serif;
     align-self: center;
 }
+
 /* .peliculasPopulares{
     color: green
 } */

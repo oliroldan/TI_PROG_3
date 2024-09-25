@@ -1,18 +1,24 @@
-.searchform{
+.searchform {
     background-color: rgba(154, 42, 202, 0.68);
-    border: 0;
-    border-radius: 5px;
-    height:30px;
-    width: 90px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
-input{
-    height: 24px;
-    width: 100px;
+input {
+    padding: 8px 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 150px;
+    transition: border 0.3s;
 }
 
-.search{
+.search {
     display: flex;
-    justify-content: space-evenly;
-    justify-self: center;
+    align-items: center;
 }

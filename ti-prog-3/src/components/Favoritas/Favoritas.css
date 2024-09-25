@@ -1,0 +1,40 @@
+.titulo_pelicula{
+    color: rgba(152, 46, 198, 0.68);
+}
+
+.titulo_fav{
+    color: rgba(94, 11, 130, 0.68);
+}
+
+.pelicula_fav{
+    display: flex;
+    color: #777;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+    align-items: center;
+    flex-direction: column;
+}
+
+.pelicula_fav img{
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+ul .lista{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+  }
+
+.favoritos {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }

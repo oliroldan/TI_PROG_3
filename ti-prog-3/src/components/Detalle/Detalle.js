@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import "./Detalle.css"
@@ -19,18 +18,28 @@ class Detalle extends Component {
     }
 
     componentDidMount() {
-        console.log('ID', this.props.id)
         this.setState({
             isLoading: true
         })
+
         fetch(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=6d74e7317f9a497bee146a3eed86d6f7`)
             .then(response => response.json())
             .then(data => {
-                this.setState({ pelicula: data, isLoading: false })
-                console.log(data)
-            })
-            .catch(err => console.log(err))
+                this.setState({
+                    pelicula: data,
+                    isLoading: false
+                });
 
+                const storage = localStorage.getItem('favoritos');
+                if (storage) {
+                    const favoritos = JSON.parse(storage);
+                    const esFavorito = favoritos.includes(data.id);
+                    this.setState({
+                        esFavorito
+                    });
+                }
+            })
+            .catch(err => console.log(err));
     }
 
     handleShowDescr() {
@@ -40,34 +49,29 @@ class Detalle extends Component {
     }
 
     agregarFavorito() {
-        const storage = localStorage.getItem('favoritos')
+        const storage = localStorage.getItem('favoritos');
+        let favoritos = [];
 
-        if (storage !== null) {
-            const parsedArray = JSON.parse(storage)
-            parsedArray.push(this.props.pelicula.id)
-            const stringArray = JSON.stringify(parsedArray)
-            localStorage.setItem('favoritos', stringArray)
-        } else {
-            const primerPelicula = [this.props.pelicula.id]
-            const stringArray = JSON.stringify(primerPelicula)
-            localStorage.setItem('favoritos', stringArray)
+        if (storage) {
+            favoritos = JSON.parse(storage);
         }
+
+        favoritos.push(this.state.pelicula.id);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+
         this.setState({
             esFavorito: true
-        })
+        });
     }
 
     sacarFavorito() {
-        const storage = localStorage.getItem('favoritos')
-        const parsedArray = JSON.parse(storage)
-        const favoritosRestantes = parsedArray.filter(id => id !== this.props.pelicula.id)
-        const stringArray = JSON.stringify(favoritosRestantes)
-        localStorage.setItem('favoritos', stringArray)
-        this.setState({
-            esFavorito: false
-        })
-
+        const storage = localStorage.getItem('favoritos');
+        let favoritos = JSON.parse(storage);
+        favoritos = favoritos.filter(id => id !== this.state.pelicula.id);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        this.setState({ esFavorito: false });
     }
+
 
     render() {
 
@@ -80,7 +84,7 @@ class Detalle extends Component {
 
                     <p>Duracion: {this.state.pelicula.runtime} minutos</p>
                     <p>Estreno: {this.state.pelicula.release_date}</p>
-                    {/* <p>Generos: {this.state.pelicula.genres.map(genre => genre.name).join(', ')}</p> HACE QUE ROMPA FAVORITAS*/}
+                    <p>Generos: {this.state.pelicula.genres.map(genre => genre.name).join(', ')}</p>
                     <p>Rating: <a className="rating" href={`https://www.imdb.com/title/${this.state.pelicula.imdb_id}/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_${this.state.pelicula.imdb_id}`}>IMDB</a></p>
 
                     <p>{this.state.pelicula.overview}</p>
