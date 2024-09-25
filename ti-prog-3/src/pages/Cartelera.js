@@ -40,12 +40,12 @@ class Cartelera extends Component {
   handleLoadMore() {
     fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${this.state.actualPage}&api_key=6d74e7317f9a497bee146a3eed86d6f7`)
       .then(response => response.json())
-      .then(data => 
+      .then(data =>
         this.setState({
-            info: this.state.info.concat(data.results),
-            peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
-            actualPage: this.state.actualPage + 1
-         }));
+          info: this.state.info.concat(data.results),
+          peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
+          actualPage: this.state.actualPage + 1
+        }));
   }
 
   render() {
@@ -54,13 +54,14 @@ class Cartelera extends Component {
         <h2 className="peliculasCartelera">
           <Link to="/cartelera">Peliculas en cartelera</Link>
         </h2>
-        
-        {/* //aca iria el filtrar de sofi  */}
-
-        <Peliculas info={this.state.peliculasFiltrado} />
 
         <div>
-         {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!! */}
+          <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
+          <Peliculas info={this.state.peliculasFiltrado} />
+        </div>
+
+        <div>
+          {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
           <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
         </div>
       </>

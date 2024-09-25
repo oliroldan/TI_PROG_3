@@ -57,11 +57,8 @@ class Populares extends Component {
 
         <div>
           <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-          <Peliculas pelicula={this.state.info} />
+          <Peliculas info={this.state.peliculasFiltrado} />
         </div>
-
-        {/*<Peliculas url={popularesUrl}></Peliculas>*/}
-        <Peliculas info={this.state.peliculasFiltrado} />
 
         <div>
           {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
