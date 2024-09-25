@@ -3,7 +3,7 @@ import "./Pelicula.css"
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-import Favoritas from '../Favoritas/Favoritas';
+//import Favoritas from '../Favoritas/Favoritas';
 
 class Pelicula extends Component {
     constructor(props) {
@@ -45,6 +45,36 @@ class Pelicula extends Component {
         })
     }
 
+    agregarFavorito() {
+        const storage = localStorage.getItem('favoritos')
+
+        if (storage !== null) {
+            const parsedArray = JSON.parse(storage)
+            parsedArray.push(this.props.pelicula.id)
+            const stringArray = JSON.stringify(parsedArray)
+            localStorage.setItem('favoritos', stringArray)
+        } else {
+            const primerPelicula = [this.props.pelicula.id]
+            const stringArray = JSON.stringify(primerPelicula)
+            localStorage.setItem('favoritos', stringArray)
+        }
+        this.setState({
+            esFavorito: true
+        })
+    }
+
+    sacarFavorito() {
+        const storage = localStorage.getItem('favoritos')
+        const parsedArray = JSON.parse(storage)
+        const favoritosRestantes = parsedArray.filter(id => id !== this.props.pelicula.id)
+        const stringArray = JSON.stringify(favoritosRestantes)
+        localStorage.setItem('favoritos', stringArray)
+        this.setState({
+            esFavorito: false
+        })
+
+    }
+
     render() {
         const { id, title, overview, poster_path } = this.props.pelicula;
 
@@ -61,7 +91,7 @@ class Pelicula extends Component {
 
                             <article className='extra'>
                                 <p className={this.state.showDescr ? "show" : "hide"}>{overview}</p>
-                                <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar descr" : "Ver descr"}</button>
+                                <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar sinopsis" : "Ver sinopsis"}</button>
                             </article>
 
                             <p><Link to={`/pelicula/id/${id}`}>Ir a detalle</Link></p>
@@ -71,7 +101,7 @@ class Pelicula extends Component {
                                 <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
                                     <p>{!this.state.esFavorito ? <FaRegHeart size={20} /> : <FaHeart size={20} />}</p>
                                 </button>
-                            </div>
+                            </div> 
 
                         </article> 
 

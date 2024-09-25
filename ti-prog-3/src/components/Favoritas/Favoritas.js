@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./Favoritas.css"
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+//import { FaHeart } from "react-icons/fa";
+//import { FaRegHeart } from "react-icons/fa";
+import Detalle from "../Detalle/Detalle";
 
 class Favoritas extends Component {
     constructor(props) {
@@ -24,14 +25,14 @@ class Favoritas extends Component {
             Promise.all(
                 parsedStorage.map((id) =>
                     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=6d74e7317f9a497bee146a3eed86d6f7`)
-                    .then((response) => response.json())))
-                    .then((data) => {
-                        this.setState({
-                            peliculas: data
-                        })
-            }
+                        .then((response) => response.json())))
+                .then((data) => {
+                    this.setState({
+                        peliculas: data
+                    })
+                }
 
-            )
+                )
         }
 
         this.setState({
@@ -74,9 +75,8 @@ class Favoritas extends Component {
             <div>
                 {!this.state.isLoading ? (
                     <article>
-                            <p>datos de la pelicula</p>
-
-                        </article>
+                        <Detalle/>
+                    </article>
                 ) : <h2>Cargando...</h2>}
             </div>
         )

@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     font-weight: bolder;
-    background-color: #ffd1dc;
+    background-color: #eec2ee;
     height: fit-content;
     flex-wrap: wrap;
 }
