@@ -37,10 +37,10 @@ class Peliculas extends Component {
               {this.props.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
             </div>
 
-            <div className='masPelis'>
+            {/* <div className='masPelis'>
               <p className={this.state.verMas ? "show" : "hide"}>{this.state.info.map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}</p>
               <button onClick={() => this.handleVerMas()}>{this.state.verMas ? "Cargar mas" : "Cargar mas"}</button>
-            </div>
+            </div> */}
 
           </article>
         </section>

@@ -40,14 +40,12 @@ class Populares extends Component {
   handleLoadMore() {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then(response => response.json())
-      .then(data => {
-        this.setState(
-          {
-            info: this.state.info.concat(data.results),
-            peliculasFiltrado: this.state.info.concat(data.results),
-            actualPage: this.state.actualPage + 1
-          })
-      })
+      .then(data =>
+        this.setState({
+          info: this.state.info.concat(data.results),
+          peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
+          actualPage: this.state.actualPage + 1
+        }));
   }
 
   render() {
@@ -62,13 +60,13 @@ class Populares extends Component {
           <Peliculas pelicula={this.state.info} />
         </div>
 
-        <div>
-          {this.state.peliculasFiltrado.lenght === 0 &&
-          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>}
-        </div>
-
         {/*<Peliculas url={popularesUrl}></Peliculas>*/}
         <Peliculas info={this.state.peliculasFiltrado} />
+
+        <div>
+          {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
+          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
+        </div>
       </>
     )
   }
