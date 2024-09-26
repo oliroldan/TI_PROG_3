@@ -7,11 +7,12 @@ class Populares extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: [], // el le puso movie
+      info: [], 
       peliculasFiltrado: [],
       filterValue: " ",
       actualPage: 1,
-      isLoading: true
+      isLoading: true/* , 
+      isLoadingCargarMas: true */
     }
   }
 
@@ -44,13 +45,18 @@ class Populares extends Component {
   }
 
   handleLoadMore() {
+   /*  this.setState({
+      isLoadingCargarMas: true
+    }) */
+
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then(response => response.json())
       .then(data =>
         this.setState({
           info: this.state.info.concat(data.results),
           peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
-          actualPage: this.state.actualPage + 1
+          actualPage: this.state.actualPage + 1/* , 
+          isLoadingCargarMas: false */
         }));
   }
 

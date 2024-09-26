@@ -4,19 +4,27 @@ import Pelicula from '../Pelicula/Pelicula';
 class HomeMovies extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       info: [],
-      verMas: false
-     };
+      verMas: false,
+      isLoading: true
+    };
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
+
     fetch(this.props.url)
       .then(response => response.json())
-      .then(data => this.setState({ info: data.results }))
+      .then(data => this.setState({
+        info: data.results,
+        isLoading: false
+      }))
       .catch(error => console.error(error));
   }
-  handleVerMas(){
+  handleVerMas() {
     this.setState({
       verMas: !this.state.verMas // muestra lo contrario de lo que ya tenia
     })
@@ -25,16 +33,17 @@ class HomeMovies extends Component {
   render() {
     return (
       <>
-        <section className='contenedor'>
+        {this.state.isLoading ? <p>Cargando...</p> : <section className='contenedor'>
           <article>
 
             <h3>{this.props.titulo}</h3>
-            
+
             <div className='peli'>
               {this.state.info.slice(0, 6).map((pelicula, index) => (<Pelicula key={index} pelicula={pelicula} />))}
             </div>
           </article>
-        </section>
+        </section>}
+
       </>
     )
   }
