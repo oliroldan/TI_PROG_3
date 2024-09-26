@@ -10,11 +10,16 @@ class Populares extends Component {
       info: [], // el le puso movie
       peliculasFiltrado: [],
       filterValue: " ",
-      actualPage: 1
+      actualPage: 1,
+      isLoading: true
     }
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
+
     fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${this.state.actualPage}&api_key=6d74e7317f9a497bee146a3eed86d6f7`)
       .then(response => response.json())
       .then(data => {
@@ -22,7 +27,8 @@ class Populares extends Component {
           {
             info: data.results,
             peliculasFiltrado: data.results,
-            actualPage: this.state.actualPage + 1
+            actualPage: this.state.actualPage + 1,
+            isLoading: false
           })
       })
       .catch(error => console.error(error));
@@ -51,19 +57,22 @@ class Populares extends Component {
   render() {
     return (
       <>
-        <h2 className="peliculasPopulares">
-          <Link to="/populares">Peliculas populares </Link>
-        </h2>
+        {this.state.isLoading ? <p>Cargando...</p> : <section>
+          <h2 className="peliculasPopulares">
+            <Link to="/populares">Peliculas populares </Link>
+          </h2>
 
-        <div>
-          <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-          <Peliculas info={this.state.peliculasFiltrado} />
-        </div>
+          <div>
+            <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
+            <Peliculas info={this.state.peliculasFiltrado} />
+          </div>
 
-        <div>
-          {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
-          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
-        </div>
+          <div>
+            {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
+            <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
+          </div>
+        </section>}
+        
       </>
     )
   }
