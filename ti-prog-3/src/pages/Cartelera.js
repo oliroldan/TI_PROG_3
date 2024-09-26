@@ -10,11 +10,16 @@ class Cartelera extends Component {
       info: [], // el le puso movie
       peliculasFiltrado: [],
       filterValue: " ",
-      actualPage: 1
+      actualPage: 1, 
+      isLoading: true
     }
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
+
     fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${this.state.actualPage}&api_key=6d74e7317f9a497bee146a3eed86d6f7`)
       .then(response => response.json())
       .then(data => {
@@ -22,7 +27,8 @@ class Cartelera extends Component {
           {
             info: data.results,
             peliculasFiltrado: data.results,
-            actualPage: this.state.actualPage + 1
+            actualPage: this.state.actualPage + 1, 
+            isLoading: false
           })
       })
       .catch(error => console.error(error));
@@ -51,6 +57,7 @@ class Cartelera extends Component {
   render() {
     return (
       <>
+      {this.state.isLoading ? <p>Cargando...</p>: <section>
         <h2 className="peliculasCartelera">
           <Link to="/cartelera">Peliculas en cartelera</Link>
         </h2>
@@ -64,7 +71,10 @@ class Cartelera extends Component {
           {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
           <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
         </div>
+        </section>}
+      
       </>
+      
     )
   }
 }
