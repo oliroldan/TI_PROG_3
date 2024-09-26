@@ -6,32 +6,35 @@ export class SearchResults extends Component {
     super(props)
 
     this.state = {
-      movies: [],
+      info: [],
       isLoading: true
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       isLoading: true
     })
     fetch(`https://api.themoviedb.org/3/search/movie?query=${this.props.location.state.query}&api_key=6d74e7317f9a497bee146a3eed86d6f7`)
-    .then((response) => response.json())
-    .then((data) => {
-      this.setState({
-        movies: data.results,
-        isLoading: false
-      });
-    })
-    .catch((error) => console.log(error));
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          info: data.results,
+          isLoading: false
+        });
+      })
+      .catch((error) => console.log(error));
   }
-  
+
   render() {
     return (
-      
+
       <>
-        SearchResults {this.props.location.state.query}
-        {!this.state.isLoading ? (<Peliculas movies= {this.state.movies}/>) : (<p>Loading...</p>)}
+          {!this.state.isLoading ? (
+              <div>
+              <h2>Resultados de búsqueda: {this.props.location.state.query}</h2>
+              <Peliculas info={this.state.info} />
+              </div>) : (<p>Cargando...</p>)}
       </>
     )
   }
