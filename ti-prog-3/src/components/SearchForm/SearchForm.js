@@ -35,7 +35,7 @@ export class SearchForm extends Component {
           <form onSubmit={(e) => this.handleCancelSubmit(e)} >
             <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
 
-            <button className="searchform" onClick={(this.handleInputSubmit)}>Search</button>
+            <button className="searchform" onClick={(this.handleInputSubmit)}>Search</button>  {/*//aca puede ser q falte un () */}
           </form>
         </div >
       </>
