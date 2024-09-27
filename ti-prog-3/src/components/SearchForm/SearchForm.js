@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import React,{ Component } from 'react'
+// import { withRouter } from 'react-router-dom';
 import "./SearchForm.css";
 
 export class SearchForm extends Component {
@@ -9,6 +10,8 @@ export class SearchForm extends Component {
     this.state = {
       query: ''
     }
+    this.handleInputSubmit = this.handleInputSubmit.bind(this);
+
   }
 
   handleInputChange(e) {
@@ -17,25 +20,27 @@ export class SearchForm extends Component {
     })
   }
 
-  handleCancelSubmit(e){
+  handleCancelSubmit(e) {
     e.preventDefault()
   }
 
   handleInputSubmit() {
-    this.props.history.push('/search', {query: this.state.query})
+    this.props.history.push('/search', { query: this.state.query })
   }
 
   render() {
     return (
       <>
         <div className='search'>
-          <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
+          <form onSubmit={(e) => this.handleCancelSubmit(e)} >
+            <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
 
-          <button className="searchform" onClick={(this.handleInputSubmit)}>Search</button>
+            <button className="searchform" onClick={(this.handleInputSubmit)}>Search</button>
+          </form>
         </div >
       </>
     )
   }
 }
-
+/* export default withRouter(SearchForm) */
 export default SearchForm
