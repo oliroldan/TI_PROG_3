@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import { Component } from 'react'
 // import { withRouter } from 'react-router-dom';
 import "./SearchForm.css";
 
@@ -25,6 +25,7 @@ export class SearchForm extends Component {
   }
 
   handleInputSubmit() {
+    //console.log(this.props.history)
     this.props.history.push('/search', { query: this.state.query })
   }
 
@@ -35,7 +36,7 @@ export class SearchForm extends Component {
           <form onSubmit={(e) => this.handleCancelSubmit(e)} >
             <input onChange={(e) => this.handleInputChange(e)} type="text" name="query" value={this.state.query} />
 
-            <button className="searchform" onClick={(this.handleInputSubmit)}>Search</button>  {/*//aca puede ser q falte un () */}
+            <button className="searchform" onClick={()=> this.handleInputSubmit()}>Search</button>  
           </form>
         </div >
       </>
