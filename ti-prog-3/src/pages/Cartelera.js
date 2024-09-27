@@ -54,6 +54,13 @@ class Cartelera extends Component {
         }));
   }
 
+  handleResetFilter(){
+    this.setState({
+      filterValue: " ",
+      peliculasFiltrado: this.state.info
+    })
+  }
+  
   render() {
     return (
       <>
@@ -64,15 +71,16 @@ class Cartelera extends Component {
 
         <div>
           <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
+          <button onClick = {()=> this.handleResetFilter()}>Reset filter</button>
           <Peliculas info={this.state.peliculasFiltrado} />
         </div>
 
         <div>
-          {/* {this.state.peliculasFiltrado.length === 0 && DEJAR COMENTADO HASTA QUE ANDE EL FILTER!!!*/}
-          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
+          {this.state.peliculasFiltrado.length === 0 &&
+          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>}
         </div>
-        </section>}
-      
+        </section>
+      }
       </>
       
     )
