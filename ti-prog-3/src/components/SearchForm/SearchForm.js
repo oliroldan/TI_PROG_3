@@ -10,7 +10,6 @@ export class SearchForm extends Component {
     this.state = {
       query: ''
     }
-    this.handleInputSubmit = this.handleInputSubmit.bind(this);
 
   }
 
