@@ -10,8 +10,9 @@ class Cartelera extends Component {
       info: [], // el le puso movie
       peliculasFiltrado: [],
       filterValue: " ",
-      actualPage: 1, 
-      isLoading: true
+      actualPage: 1,
+      isLoading: true,
+      isLoadingCargarMas: false
     }
   }
 
@@ -27,7 +28,7 @@ class Cartelera extends Component {
           {
             info: data.results,
             peliculasFiltrado: data.results,
-            actualPage: this.state.actualPage + 1, 
+            actualPage: this.state.actualPage + 1,
             isLoading: false
           })
       })
@@ -44,13 +45,18 @@ class Cartelera extends Component {
   }
 
   handleLoadMore() {
+    this.setState({
+      isLoadingCargarMas: true
+    })
+
     fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${this.state.actualPage}&api_key=6d74e7317f9a497bee146a3eed86d6f7`)
       .then(response => response.json())
       .then(data =>
         this.setState({
           info: this.state.info.concat(data.results),
           peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
-          actualPage: this.state.actualPage + 1
+          actualPage: this.state.actualPage + 1,
+          isLoadingCargarMas: false
         }));
   }
 
@@ -60,29 +66,31 @@ class Cartelera extends Component {
   //     peliculasFiltrado: this.state.info
   //   })
   // }
-  
+
   render() {
     return (
       <>
-      {this.state.isLoading ? <p>Cargando...</p>: <section>
-        <h2 className="peliculasCartelera">
-          <Link to="/cartelera">Peliculas en cartelera</Link>
-        </h2>
+        {this.state.isLoading ? <p>Cargando...</p> : <section>
+          <h2 className="peliculasCartelera">
+            <Link to="/cartelera">Peliculas en cartelera</Link>
+          </h2>
 
-        <div>
-          <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-          {/* <button onClick = {()=> this.handleResetFilter()}>Reset filter</button> */}
-          <Peliculas info={this.state.peliculasFiltrado} />
-        </div>
+          <div>
+            <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
+            {/* <button onClick = {()=> this.handleResetFilter()}>Reset filter</button> */}
+            <Peliculas info={this.state.peliculasFiltrado} />
+          </div>
 
-        <div>
-          {/* {this.state.peliculasFiltrado.length === 0 && */}
-          <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
-        </div>
+          <div>
+            {/* {this.state.peliculasFiltrado.length === 0 && */}
+            <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
+              {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"}
+            </button>
+          </div>
         </section>
-      }
+        }
       </>
-      
+
     )
   }
 }
