@@ -11,8 +11,8 @@ class Populares extends Component {
       peliculasFiltrado: [],
       filterValue: " ",
       actualPage: 1,
-      isLoading: true/* , 
-      isLoadingCargarMas: true */
+      isLoading: true, 
+      isLoadingCargarMas: false
     }
   }
 
@@ -45,9 +45,9 @@ class Populares extends Component {
   }
 
   handleLoadMore() {
-   /*  this.setState({
+    this.setState({
       isLoadingCargarMas: true
-    }) */
+    })
 
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then(response => response.json())
@@ -55,8 +55,8 @@ class Populares extends Component {
         this.setState({
           info: this.state.info.concat(data.results),
           peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
-          actualPage: this.state.actualPage + 1/* , 
-          isLoadingCargarMas: false */
+          actualPage: this.state.actualPage + 1, 
+          isLoadingCargarMas: false
         }));
   }
 
@@ -83,7 +83,8 @@ class Populares extends Component {
 
           <div>
             {/* {this.state.peliculasFiltrado.length === 0 && */}
-            <button onClick={() => this.handleLoadMore()}>CARGAR MAS</button>
+            <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
+            {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"} </button>            
           </div>
         </section>}
         
