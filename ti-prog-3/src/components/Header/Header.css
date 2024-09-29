@@ -27,4 +27,8 @@ header .search {
         margin-top: 15px;
         justify-content: center;
     }
+
+    header{
+        width: 100%;
+    }
 }

@@ -44,7 +44,7 @@ class Detalle extends Component {
 
     handleShowDescr() {
         this.setState({
-            showDescr: !this.state.showDescr // muestra lo contrario de lo que ya tenia
+            showDescr: !this.state.showDescr
         })
     }
 

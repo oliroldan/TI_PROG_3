@@ -1,5 +1,4 @@
 import { Component } from 'react'
-// import { withRouter } from 'react-router-dom';
 import "./SearchForm.css";
 
 class SearchForm extends Component {
@@ -24,7 +23,6 @@ class SearchForm extends Component {
   }
 
   handleInputSubmit() {
-    //console.log(this.props.history)
     this.props.history.push('/search', { query: this.state.query })
   }
 
@@ -42,5 +40,5 @@ class SearchForm extends Component {
     )
   }
 }
-/* export default withRouter(SearchForm) */
+
 export default SearchForm

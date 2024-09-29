@@ -13,4 +13,11 @@
     height: 50px;
 }
 
-
+@media (max-width: 420px) {
+    .footer {
+        flex-direction: column;
+        font-size: 0.9rem;
+        padding: 10px; 
+        height: auto; 
+    }
+}

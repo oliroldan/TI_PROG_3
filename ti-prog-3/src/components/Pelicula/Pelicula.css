@@ -37,3 +37,20 @@ a{
 .show{
     display: block;
 }
+
+@media (max-width: 420px) {
+    .pelicula {
+        width: 100%; 
+        font-size: 14px; 
+        padding: 8px; 
+        margin-bottom: 15px; 
+    }
+
+    .pelicula img {
+        margin-bottom: 15px; 
+    }
+
+    .pelicula p, .pelicula h2 {
+        font-size: 12px; 
+    }
+}

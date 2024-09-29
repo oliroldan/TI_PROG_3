@@ -26,7 +26,7 @@ class HomeMovies extends Component {
   }
   handleVerMas() {
     this.setState({
-      verMas: !this.state.verMas // muestra lo contrario de lo que ya tenia
+      verMas: !this.state.verMas 
     })
   }
 

@@ -22,3 +22,15 @@
 .hide{
     display: none;
 }
+
+@media (max-width: 420px) {
+    .contenedor {
+        margin-left: 30px; 
+        margin-right: 30px;
+    }
+
+    .peli {
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+}

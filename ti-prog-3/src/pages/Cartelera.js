@@ -1,13 +1,13 @@
 import Peliculas from "../components/Peliculas/Peliculas";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-//const cartelUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=6d74e7317f9a497bee146a3eed86d6f7`;
+
 
 class Cartelera extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: [], // el le puso movie
+      info: [], 
       peliculasFiltrado: [],
       filterValue: " ",
       actualPage: 1,
@@ -60,12 +60,12 @@ class Cartelera extends Component {
         }));
   }
 
-  // handleResetFilter(){
-  //   this.setState({
-  //     filterValue: " ",
-  //     peliculasFiltrado: this.state.info
-  //   })
-  // }
+  handleResetFilter() {
+    this.setState({
+      filterValue: " ",
+      peliculasFiltrado: this.state.info
+    })
+  }
 
   render() {
     return (
@@ -77,15 +77,15 @@ class Cartelera extends Component {
 
           <div>
             <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-            {/* <button onClick = {()=> this.handleResetFilter()}>Reset filter</button> */}
-            <Peliculas info={this.state.peliculasFiltrado} />
+            <button onClick = {()=> this.handleResetFilter()}>Reset filter</button>
+            <Peliculas info={this.state.peliculasFiltrado}/>
           </div>
 
           <div>
-            {/* {this.state.peliculasFiltrado.length === 0 && */}
+            {this.state.filterValue === " " && 
             <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
               {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"}
-            </button>
+            </button>}
           </div>
         </section>
         }
