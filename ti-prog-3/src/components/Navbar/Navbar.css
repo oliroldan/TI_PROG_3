@@ -1,44 +1,38 @@
-.navbar{
+.navbar {
     display: flex;
     font-weight: bolder;
     background-color: #eec2ee;
-    height: 90px;
+    height: 95px;
     flex-wrap: wrap;
 }
 
-.logo{
-    width: 110px;
+.logo {
+    width: 95px;
     max-height: 100%;
-    display: flex; 
+    display: flex;
     border-radius: 70px;
     align-self: center;
 }
 
-ul{
+ul {
     color: black;
     list-style: none;
     display: flex;
 }
 
-li{
+li {
     padding: 20px 20px;
-}
-
-.titulo{
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    align-self: center;
 }
 
 @media (max-width: 420px) {
     .navbar {
-        flex-direction: row; 
+        flex-direction: row;
         align-items: center;
-        height: auto; 
+        height: auto;
     }
 
     .logo {
-        width: 60px; 
+        width: 60px;
         border-radius: 30px;
     }
 
@@ -47,13 +41,12 @@ li{
     }
 
     li {
-        padding: 5px 10px; 
+        padding: 5px 10px;
         font-size: 12px;
     }
 
     .titulo {
-        font-size: 16px; 
+        font-size: 16px;
         text-align: center;
     }
 }
-

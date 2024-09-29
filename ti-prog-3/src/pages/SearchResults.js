@@ -30,11 +30,11 @@ export class SearchResults extends Component {
     return (
 
       <>
-          {!this.state.isLoading ? (
-              <div>
-              <h2>Resultados de búsqueda: {this.props.location.state.query}</h2>
-              <Peliculas info={this.state.info} />
-              </div>) : (<p>Cargando...</p>)}
+        {!this.state.isLoading ? (
+          <div>
+            <h2>Resultados de búsqueda: {this.props.location.state.query}</h2>
+            <Peliculas info={this.state.info} />
+          </div>) : (<p>Cargando...</p>)}
       </>
     )
   }

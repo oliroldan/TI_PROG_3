@@ -3,9 +3,8 @@
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
+    margin-top: 20px;
+    margin-right: 10px;
 }
 
 input {
@@ -14,11 +13,30 @@ input {
     border-radius: 25px;
     font-size: 16px;
     margin-right: 10px;
-    width: 150px;
-    transition: border 0.3s;
+    width: 200px;
 }
 
 .search {
     display: flex;
-    align-items: center;
+    justify-content: right;
+}
+
+@media (max-width: 600px) {
+    .search input {
+        width: 200px;
+    }
+
+    .search form {
+        flex-direction: column;
+    }
+
+    .search input,
+    .search button {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .search button {
+        margin-top: 10px;
+    }
 }

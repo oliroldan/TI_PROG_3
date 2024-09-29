@@ -13,7 +13,7 @@ class Peliculas extends Component {
 
   handleVerMas() {
     this.setState({
-      verMas: !this.state.verMas 
+      verMas: !this.state.verMas
     })
   }
 

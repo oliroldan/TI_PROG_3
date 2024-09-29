@@ -72,7 +72,6 @@ class Detalle extends Component {
         this.setState({ esFavorito: false });
     }
 
-
     render() {
 
         return (

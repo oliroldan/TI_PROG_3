@@ -3,10 +3,10 @@ import "./Navbar.css"
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  return (
+    return (
         <nav className='navbar'>
             <article>
-                <img className= "logo" src="./img/logo.png" alt=""/>
+                <img className="logo" src="./img/logo.png" alt="" />
             </article>
             <ul>
                 <li><Link to="/" exact>Home</Link></li>
@@ -15,7 +15,7 @@ const Navbar = () => {
                 <li><Link to="/cartelera">Peliculas en cartelera</Link></li>
             </ul>
         </nav>
-  )
+    )
 }
 
 export default Navbar

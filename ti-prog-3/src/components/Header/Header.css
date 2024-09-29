@@ -1,7 +1,7 @@
 header {
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #eec2ee;
-    height: 120px;
+    height: 100px;
 }
 
 header .navbar {
@@ -9,12 +9,6 @@ header .navbar {
     justify-content: space-between;
     align-items: center;
     padding: 0 50px;
-}
-
-header .search {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 50px;
 }
 
 @media (max-width: 768px) {
@@ -28,7 +22,7 @@ header .search {
         justify-content: center;
     }
 
-    header{
+    header {
         width: 100%;
     }
 }

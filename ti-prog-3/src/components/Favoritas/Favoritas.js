@@ -30,9 +30,7 @@ class Favoritas extends Component {
                     this.setState({
                         peliculas: data
                     })
-                }
-
-                )
+                })
         }
 
         this.setState({
@@ -85,7 +83,6 @@ class Favoritas extends Component {
             }
         }
     }
-
 
     render() {
         const { peliculas } = this.state;

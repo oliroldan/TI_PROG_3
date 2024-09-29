@@ -1,4 +1,4 @@
-.pelicula{
+.pelicula {
     color: #777;
     font-size: 20px;
     padding: 10px;
@@ -6,51 +6,53 @@
     width: 24%;
     background: #fff;
     border-radius: 5px;
-    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
 }
 
-.pelicula img{
+.pelicula img {
     width: 100%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .pelicula p {
     margin: 3px 0;
 }
+
 .pelicula h2 {
     margin: 2px 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: rgba(94, 11, 130, 0.68);
 }
 
-.more{
-    color:#777;
+.more {
+    color: #777;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.show{
+.show {
     display: block;
 }
 
 @media (max-width: 420px) {
     .pelicula {
-        width: 100%; 
-        font-size: 14px; 
-        padding: 8px; 
-        margin-bottom: 15px; 
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 15px;
     }
 
     .pelicula img {
-        margin-bottom: 15px; 
+        margin-bottom: 15px;
     }
 
-    .pelicula p, .pelicula h2 {
-        font-size: 12px; 
+    .pelicula p,
+    .pelicula h2 {
+        font-size: 12px;
     }
 }

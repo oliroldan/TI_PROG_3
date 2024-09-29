@@ -1,5 +1,6 @@
-.footer{
+.footer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     background-color: #eec2ee;
@@ -8,7 +9,6 @@
     padding: 15px;
     padding-left: 20px;
     padding-right: 20px;
-    bottom: 0;
     width: 100%;
     height: 50px;
 }
@@ -17,7 +17,7 @@
     .footer {
         flex-direction: column;
         font-size: 0.9rem;
-        padding: 10px; 
-        height: auto; 
+        padding: 10px;
+        height: auto;
     }
 }

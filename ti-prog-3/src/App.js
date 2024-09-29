@@ -12,17 +12,17 @@ import Favoritos from "./pages/Favoritos";
 function App() {
   return (
     <>
-    <Header/>
-    <Switch>
-      <Route path= "/" exact component= {Home}/>
-      <Route path = "/pelicula/id/:id" component = {Detalle}/>
-      <Route path = "/populares" component = {Populares}/>
-      <Route path = "/cartelera" component = {Cartelera}/>
-      <Route path = "/favoritos" component = {Favoritos}/>
-      <Route path = "/search" component = {SearchResults}/>
-      <Route component = {NotFound} />
-    </Switch>
-    <Footer/>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/pelicula/id/:id" component={Detalle} />
+        <Route path="/populares" component={Populares} />
+        <Route path="/cartelera" component={Cartelera} />
+        <Route path="/favoritos" component={Favoritos} />
+        <Route path="/search" component={SearchResults} />
+        <Route component={NotFound} />
+      </Switch>
+      <Footer />
     </>
   );
 }

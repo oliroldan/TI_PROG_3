@@ -6,11 +6,11 @@ class Populares extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: [], 
+      info: [],
       peliculasFiltrado: [],
       filterValue: " ",
       actualPage: 1,
-      isLoading: true, 
+      isLoading: true,
       isLoadingCargarMas: false
     }
   }
@@ -54,7 +54,7 @@ class Populares extends Component {
         this.setState({
           info: this.state.info.concat(data.results),
           peliculasFiltrado: this.state.peliculasFiltrado.concat(data.results),
-          actualPage: this.state.actualPage + 1, 
+          actualPage: this.state.actualPage + 1,
           isLoadingCargarMas: false
         }));
   }
@@ -76,21 +76,20 @@ class Populares extends Component {
 
           <div>
             <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-            <button onClick = {()=> this.handleResetFilter()}>Reset filter</button>
+            <button onClick={() => this.handleResetFilter()}>Reset filter</button>
             <Peliculas info={this.state.peliculasFiltrado} />
           </div>
 
           <div>
             {this.state.filterValue === " " &&
-            <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
-            {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"} </button>}          
+              <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
+                {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"} </button>}
           </div>
         </section>}
-        
+
       </>
     )
   }
 }
 
 export default Populares
-

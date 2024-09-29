@@ -1,13 +1,11 @@
 import Peliculas from "../components/Peliculas/Peliculas";
 import { Component } from "react";
-import { Link } from "react-router-dom";
-
 
 class Cartelera extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: [], 
+      info: [],
       peliculasFiltrado: [],
       filterValue: " ",
       actualPage: 1,
@@ -71,26 +69,23 @@ class Cartelera extends Component {
     return (
       <>
         {this.state.isLoading ? <p>Cargando...</p> : <section>
-          <h2 className="peliculasCartelera">
-            <Link to="/cartelera">Peliculas en cartelera</Link>
-          </h2>
+          <h2>Peliculas en Cartelera</h2>
 
           <div>
             <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-            <button onClick = {()=> this.handleResetFilter()}>Reset filter</button>
-            <Peliculas info={this.state.peliculasFiltrado}/>
+            <button onClick={() => this.handleResetFilter()}>Reset filter</button>
+            <Peliculas info={this.state.peliculasFiltrado} />
           </div>
 
           <div>
-            {this.state.filterValue === " " && 
-            <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
-              {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"}
-            </button>}
+            {this.state.filterValue === " " &&
+              <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
+                {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"}
+              </button>}
           </div>
         </section>
         }
       </>
-
     )
   }
 }
