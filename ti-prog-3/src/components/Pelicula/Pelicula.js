@@ -17,12 +17,17 @@ class Pelicula extends Component {
     }
 
     componentDidMount() {
+        this.setState({
+            isLoading: true
+        })
+        
         const storage = localStorage.getItem('favoritos')
         if (storage !== null) {
             const parsedArray = JSON.parse(storage)
             const estaEnFavoritos = parsedArray.includes(this.props.pelicula.id)
             this.setState({
-                esFavorito: estaEnFavoritos
+                esFavorito: estaEnFavoritos,
+                isLoading: false
             })
         }
 
@@ -79,7 +84,7 @@ class Pelicula extends Component {
 
         return (
             <>
-                <section className='pelicula'>
+            {this.state.isLoading ? <p>Cargando...</p> : <section className='pelicula'>
                     <div>
 
                         <article>
@@ -104,7 +109,7 @@ class Pelicula extends Component {
                         </article>
 
                     </div>
-                </section>
+                </section>}
             </>
         )
     }
