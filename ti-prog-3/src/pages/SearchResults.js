@@ -28,7 +28,6 @@ export class SearchResults extends Component {
 
   render() {
     return (
-
       <>
         {!this.state.isLoading ? (
           <div>

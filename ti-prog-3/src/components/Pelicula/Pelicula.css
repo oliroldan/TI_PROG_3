@@ -28,7 +28,14 @@ a {
 }
 
 .more {
-    color: #777;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 3px 20px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .hide {
@@ -37,6 +44,21 @@ a {
 
 .show {
     display: block;
+}
+
+.boton_fav {
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 3px 20px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.detalle {
+    font-weight: 600;
 }
 
 @media (max-width: 420px) {

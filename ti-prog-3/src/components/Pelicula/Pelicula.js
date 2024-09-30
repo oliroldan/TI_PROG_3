@@ -20,7 +20,7 @@ class Pelicula extends Component {
         this.setState({
             isLoading: true
         })
-        
+
         const storage = localStorage.getItem('favoritos')
         if (storage !== null) {
             const parsedArray = JSON.parse(storage)
@@ -84,7 +84,7 @@ class Pelicula extends Component {
 
         return (
             <>
-            {this.state.isLoading ? <p>Cargando...</p> : <section className='pelicula'>
+                {this.state.isLoading ? <p>Cargando...</p> : <section className='pelicula'>
                     <div>
 
                         <article>
@@ -97,11 +97,11 @@ class Pelicula extends Component {
                                 <button className='more' onClick={() => this.handleShowDescr()}>{this.state.showDescr ? "Ocultar sinopsis" : "Ver sinopsis"}</button>
                             </article>
 
-                            <p><Link to={`/pelicula/id/${id}`}>Ir a detalle</Link></p>
+                            <p className='detalle'><Link to={`/pelicula/id/${id}`}>Ir a detalle</Link></p>
 
                             <i className='fas fa clipboard-list fa-2x text-grey-300'></i>
                             <div className="favoritos">
-                                <button onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
+                                <button className="boton_fav" onClick={() => !this.state.esFavorito ? this.agregarFavorito() : this.sacarFavorito()}>
                                     <p>{!this.state.esFavorito ? <FaRegHeart size={20} /> : <FaHeart size={20} />}</p>
                                 </button>
                             </div>

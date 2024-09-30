@@ -24,7 +24,7 @@ class HomeMovies extends Component {
       }))
       .catch(error => console.error(error));
   }
-  
+
   handleVerMas() {
     this.setState({
       verMas: !this.state.verMas
