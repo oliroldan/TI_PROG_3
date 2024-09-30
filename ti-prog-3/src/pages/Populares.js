@@ -8,7 +8,7 @@ class Populares extends Component {
     this.state = {
       info: [],
       peliculasFiltrado: [],
-      filterValue: " ",
+      filterValue: '',
       actualPage: 1,
       isLoading: true,
       isLoadingCargarMas: false
@@ -61,7 +61,7 @@ class Populares extends Component {
 
   handleResetFilter() {
     this.setState({
-      filterValue: " ",
+      filterValue: '',
       peliculasFiltrado: this.state.info
     })
   }
@@ -75,14 +75,14 @@ class Populares extends Component {
           </h2>
 
           <div>
-            <input type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
-            <button onClick={() => this.handleResetFilter()}>Reset filter</button>
+            <input className="filtrar" type="text" onChange={(e) => this.handleFilterChange(e)} placeholder="Filtrar peliculas" value={this.state.filterValue} />
+            <button className="boton_filtro" onClick={() => this.handleResetFilter()}>Borrar filtro</button>
             <Peliculas info={this.state.peliculasFiltrado} />
           </div>
 
-          <div>
-            {this.state.filterValue === " " &&
-              <button onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
+          <div className="mas">
+            {this.state.filterValue === '' &&
+              <button className="boton_mas" onClick={() => this.handleLoadMore()} disabled={this.state.isLoadingCargarMas}>
                 {this.state.isLoadingCargarMas ? "Cargando..." : "CARGAR MAS"} </button>}
           </div>
         </section>}

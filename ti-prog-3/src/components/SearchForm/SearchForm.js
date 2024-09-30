@@ -33,7 +33,7 @@ class SearchForm extends Component {
           <form onSubmit={(e) => this.handleCancelSubmit(e)} >
             <input onChange={(e) => this.handleInputChange(e)} placeholder="Ingresa tu busqueda" type="text" name="query" value={this.state.query} />
 
-            <button className="searchform" onClick={() => this.handleInputSubmit()}>Search</button>
+            <button className="searchform" onClick={() => this.handleInputSubmit()}>Buscar</button>
           </form>
         </div >
       </>
